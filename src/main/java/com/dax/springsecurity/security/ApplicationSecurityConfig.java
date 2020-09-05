@@ -44,8 +44,11 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         .formLogin()
           .loginPage("/login").permitAll()
           .defaultSuccessUrl("/courses", true)
+          .passwordParameter("password")
+          .usernameParameter("username")
           .and()
           .rememberMe() // defaults to 2 weeks
+          .rememberMeParameter("remember-me")
           .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(21))
           .key("somethingverysecured")
         .and()
